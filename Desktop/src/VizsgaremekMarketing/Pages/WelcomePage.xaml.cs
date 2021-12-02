@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace VizsgaremekMarketing.Pages
 {
     /// <summary>
-    /// Interaction logic for UserControl1.xaml
+    /// Interaction logic for WelcomePage.xaml
     /// </summary>
-    public partial class UserControl1 : UserControl
+    public partial class WelcomePage : UserControl
     {
-        public UserControl1()
+        public WelcomePage()
         {
             InitializeComponent();
         }

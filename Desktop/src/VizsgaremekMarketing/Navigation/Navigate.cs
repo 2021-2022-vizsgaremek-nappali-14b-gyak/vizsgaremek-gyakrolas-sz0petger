@@ -7,13 +7,13 @@ using System.Windows.Controls;
 
 namespace VizsgaremekMarketing.Navigation
 {
-    class Navigate
+    public static class Navigate
     {
-        private static MainWindow mainwindow;
+        public static MainWindow mainwindow;
 
         public static void  Navigation(UserControl userControl)
         {
-            mainwindow.PageContent.Children.Add(userControl)
+            mainwindow.PageContent.Children.Add(userControl);
         }
     }
 }
