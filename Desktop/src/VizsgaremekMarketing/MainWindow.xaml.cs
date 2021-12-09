@@ -25,11 +25,34 @@ namespace VizsgaremekMarketing
         public MainWindow()
         {
             InitializeComponent();
+            //Statikus osztály a Navigate
+            //Eltárolja a nyitó ablakot, hogy azon tudjuk módosítani a "page"-ket
             Navigate.mainwindow = this;
-
+            //Létrehozzuk a nyitó "UserControl"(WelcomPage)
             WelcomePage welcomepage = new WelcomePage();
+            //Megjelenítjük a WelcomePage
             Navigate.Navigation(welcomepage);
             
+        }
+        /// <summary>
+        /// ListView elemen bal egér bgomb fel lett engedve
+        /// </summary>
+        /// <param name="sender">ListView amin megnyomtuk a bal egér gombot</param>
+        /// <param name="e"></param>
+        private void ListView_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            ListView lvMenu = sender as ListView;
+            ListViewItem lvMenuItem = lvMenu.SelectedItem as ListViewItem;
+
+            if (lvMenuItem != null)
+            {
+                switch (lvMenuItem.Name)
+                {
+                    case "lvExit":
+                        Close();
+                        break;
+                }
+            }
         }
     }
 }
