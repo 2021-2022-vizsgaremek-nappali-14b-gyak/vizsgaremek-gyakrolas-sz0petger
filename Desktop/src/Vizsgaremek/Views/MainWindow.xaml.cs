@@ -12,30 +12,32 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using VizsgaremekMarketing.Navigation;
-using VizsgaremekMarketing.Pages;
 
-namespace VizsgaremekMarketing
+using Vizsgaremek.Navigation;
+using Vizsgaremek.Pages;
+
+namespace Vizsgaremek
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
+        
         public MainWindow()
         {
             InitializeComponent();
-            //Statikus osztály a Navigate
-            //Eltárolja a nyitó ablakot, hogy azon tudjuk módosítani a "page"-ket
-            Navigate.mainwindow = this;
-            //Létrehozzuk a nyitó "UserControl"(WelcomPage)
-            WelcomePage welcomepage = new WelcomePage();
-            //Megjelenítjük a WelcomePage
-            Navigate.Navigation(welcomepage);
-            
+            // Statikus osztály a Navigate
+            // Eltárolja a nyitó ablakt, hogy azon tudjuk módosítani a "page"-ket
+            Navigate.mainWindow = this;
+            // Létrehozzuk a nyitó "UsuerControl" (WelcomPage)
+            WelcomePage welcomePage = new WelcomePage();
+            // Megjelnítjük a WelcomePage-t
+            Navigate.Navigation(welcomePage);
         }
+
         /// <summary>
-        /// ListView elemen bal egér bgomb fel lett engedve
+        /// ListView elemen bal egér gomb fel lett engedve
         /// </summary>
         /// <param name="sender">ListView amin megnyomtuk a bal egér gombot</param>
         /// <param name="e"></param>
@@ -43,16 +45,25 @@ namespace VizsgaremekMarketing
         {
             ListView lvMenu = sender as ListView;
             ListViewItem lvMenuItem = lvMenu.SelectedItem as ListViewItem;
+            //ListViewItem lvMenuItem = (ListViewItem) lvMenu.SelectedItem;
 
             if (lvMenuItem != null)
             {
+                // x:Name tulajdonságot vizsgáljuk
                 switch (lvMenuItem.Name)
                 {
-                    case "lvExit":
+                    case "lviExit":
                         Close();
                         break;
+                    case "lviProgramVersion":
+                        ProgramVersion programVersion = new ProgramVersion();
+                        Navigate.Navigation(programVersion);
+                        break;
                 }
+                
             }
         }
+
+
     }
 }
